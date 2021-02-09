@@ -28,13 +28,17 @@ function SelectModalidade() {
       .catch(function (error) {
         if (error.response) {
           if (error.response === 404) {
-            //Adicionar Erro na Página
+            // Enviar Página 404
           }
         }
       });
   }, []);
 
-  console.log(modalidades);
+  const onSubmit = (data) => {
+    data.idmodalidade = parseInt(data.idmodalidade);
+    actions.updateAction(data);
+    
+  };
 
   return (
     <PageNomeModalidade>
@@ -46,14 +50,19 @@ function SelectModalidade() {
           <div className="row">
             <h1>Selecionar Modalidade...</h1>
           </div>
-          <form className="list-modalidade">
+          <form onSubmit={handleSubmit(onSubmit)} className="list-modalidade">
             <div className="row row-cols-1 row-cols-md-3 row-cols-lg-6 list-modalidades">
-              <Select nome_modalidade="Futebol" borderColor="#3CA661" />
-              <Select nome_modalidade="BTT-Aventura" borderColor="#6F87EE" />
-              <Select nome_modalidade="Canoagem" borderColor="#EE6F6F" />
-              <Select nome_modalidade="Basquetebol" borderColor="#EED06F" />
-              <Select nome_modalidade="Trail - Aventura" borderColor="#996FEE" />
-              <Select nome_modalidade="Atletismo" borderColor="#6FAFEE" />
+              {modalidades.slice(0, 5).map((modalidade, index) => (
+                <Select
+                  refs={register}
+                  ids={modalidade.id}
+                  nome_modalidade={modalidade.nome}
+                  borderColor={modalidade.cor}
+                  value={modalidade.idmodalidade}
+                  key={index}
+                  name="idmodalidade"
+                />
+              ))}
             </div>
             <div className="d-flex justify-content-end mt-5">
               <div>
@@ -74,9 +83,9 @@ function SelectModalidade() {
 
 export default SelectModalidade;
 
-export const Select = ({ value, key, id, borderColor, nome_modalidade }) => {
+export const Select = ({ value, ids, borderColor, nome_modalidade, refs, name }) => {
   return (
-    <motion.ul
+    <motion.div
       initial={{ x: -50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -84,7 +93,7 @@ export const Select = ({ value, key, id, borderColor, nome_modalidade }) => {
     >
       <Card className="custom-radio">
         <label>
-          <input value={value} key={key} id={id} type="radio" name="modalidade" />
+          <input ref={refs} value={value} id={ids} type="radio" name={name} />
           <div className="radio-btn">
             <i>
               <BiCheck size="18" />
@@ -94,6 +103,6 @@ export const Select = ({ value, key, id, borderColor, nome_modalidade }) => {
         <h3 className="text-center">{nome_modalidade}</h3>
         <Border borderColor={borderColor} />
       </Card>
-    </motion.ul>
+    </motion.div>
   );
 };

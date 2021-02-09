@@ -27,7 +27,7 @@ createStore({
     latitude: "",
     imagem: "",
     maxinscritos: null,
-    idmodalidade: null,
+    idmodalidade: 0,
     visivel: null,
     valorfederado: null,
     valornaofederado: null,
