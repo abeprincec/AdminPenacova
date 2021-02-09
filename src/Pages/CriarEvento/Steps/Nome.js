@@ -30,7 +30,7 @@ function InserirNome() {
     actions.updateAction(data);
     console.log(data)
     if (data.nome !== "") {
-      return push("/criar_evento/select_modalidade");
+      return push("/criarevento/select_modalidade");
     }
   };
 

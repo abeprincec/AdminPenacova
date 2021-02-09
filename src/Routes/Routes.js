@@ -3,6 +3,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Signin from "../Pages/SignIn/Signin";
 import NomeEvento from "../Pages/CriarEvento/Steps/Nome";
 import SelectModalide from "../Pages/CriarEvento/Steps/SelectModalide";
+import FormEvento from "../Pages/CriarEvento/Form";
 import PrivateRoute from "./Private";
 import AuthProvider from "../Context/Authentication/ProviderLogin";
 
@@ -41,8 +42,9 @@ function Routes() {
       <Router>
         <AuthProvider>
           <Switch>
-            <PrivateRoute exact path="/criar_evento/select_modalidade" component={SelectModalide} />
-            <PrivateRoute exact path="/criar_evento/inserir_nome" component={NomeEvento} />
+            <PrivateRoute  path="/criar_evento" component={FormEvento} />
+            <PrivateRoute exact path="/criarevento/select_modalidade" component={SelectModalide} />
+            <PrivateRoute exact path="/criarevento/inserir_nome" component={NomeEvento} />
             <PrivateRoute exact path="/" component={Dashboard} />
             <Route exact path="/signin" component={Signin} />
           </Switch>

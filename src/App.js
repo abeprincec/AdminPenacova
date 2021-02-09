@@ -4,6 +4,7 @@ import { LightMode, NightMode } from "./Themes/Theme";
 import { useDarkMode } from "./Themes/useDarkMode";
 import Routes from "./Routes/Routes";
 import { GlobalStyles } from "./Styles/GlobalStyle";
+import './Styles/Style.css'
 
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";

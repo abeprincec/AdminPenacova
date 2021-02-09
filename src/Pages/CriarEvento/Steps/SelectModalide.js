@@ -37,6 +37,7 @@ function SelectModalidade() {
   const onSubmit = (data) => {
     data.idmodalidade = parseInt(data.idmodalidade);
     actions.updateAction(data);
+    return push("/criar_evento/dados_evento")
     
   };
 
