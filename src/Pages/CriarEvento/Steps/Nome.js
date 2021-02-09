@@ -13,7 +13,7 @@ function InserirNome() {
 
   const { state } = useStateMachine(updateAction);
   const { register, handleSubmit, errors } = useForm({
-    defaultValues: state.yourDetail,
+    defaultValues: state.Evento,
   });
   const { actions } = useStateMachine({ updateAction });
   const { push } = useHistory();
