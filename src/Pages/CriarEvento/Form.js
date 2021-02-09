@@ -1,8 +1,8 @@
 import React from "react";
 import { FormPage } from "./Style";
-import { NavLink, Route, Switch, useRouteMatch, useLocation } from "react-router-dom";
+import { NavLink, Route, Switch, useRouteMatch, useLocation, Link } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
-
+import { BsArrowRightShort } from "react-icons/bs";
 //Components
 import Dados from "./Steps/Dados";
 import Localizacao from "./Steps/Localizacao";
@@ -14,6 +14,10 @@ function Form() {
   const { path } = useRouteMatch();
   const location = useLocation();
   console.log(location);
+
+  if (location.pathname === "/criar_evento/dados_evento") {
+    <Link to="/criar_evento/localizacao"></Link>;
+  }
 
   return (
     <FormPage>
@@ -43,7 +47,36 @@ function Form() {
                 5. Resumo
               </NavLink>
             </div>
-            <div></div>
+            <div>
+              {location.pathname === "/criar_evento/dados_evento" && (
+                <Link style={{ color: "white" }} to="/criar_evento/localizacao">
+                  <div className="round-shape">
+                    <BsArrowRightShort size="26" />
+                  </div>
+                </Link>
+              )}
+              {location.pathname === "/criar_evento/localizacao" && (
+                <Link style={{ color: "white" }} to="/criar_evento/escaloes">
+                  <div className="round-shape">
+                    <BsArrowRightShort size="26" />
+                  </div>
+                </Link>
+              )}
+              {location.pathname === "/criar_evento/escaloes" && (
+                <Link style={{ color: "white" }} to="/criar_evento/precario">
+                  <div className="round-shape">
+                    <BsArrowRightShort size="26" />
+                  </div>
+                </Link>
+              )}
+              {location.pathname === "/criar_evento/precario" && (
+                <Link style={{ color: "white" }} to="/criar_evento/resumo">
+                  <div className="round-shape">
+                    <BsArrowRightShort size="26" />
+                  </div>
+                </Link>
+              )}
+            </div>
           </div>
           <div className="tabs">
             <Switch>

@@ -14,7 +14,7 @@ export const FormPage = styled.div`
     margin-top: 67px;
     justify-content: space-between;
     display: flex;
-    align-items: center;
+    
   }
 
   .link {
@@ -27,6 +27,12 @@ export const FormPage = styled.div`
     text-decoration: none;
     color: #dbdbdb;
     opacity: 0.7;
+  }
+
+  .round-shape {
+    padding:10px;
+    background-color: #3ca661;
+    border-radius: 50%;
   }
 
   .active-tab {
