@@ -3,6 +3,9 @@ import { FormPage } from "./Style";
 import { NavLink, Route, Switch, useRouteMatch, useLocation, Link } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import { BsArrowRightShort } from "react-icons/bs";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "./UpdateState/UpdateState";
+
 //Components
 import Dados from "./Steps/Dados";
 import Localizacao from "./Steps/Localizacao";
@@ -11,13 +14,11 @@ import Precario from "./Steps/Precario";
 import Resumo from "./Steps/Resumo";
 
 function Form() {
+  const { state, actions } = useStateMachine({ updateAction });
   const { path } = useRouteMatch();
   const location = useLocation();
-  console.log(location);
 
-  if (location.pathname === "/criar_evento/dados_evento") {
-    <Link to="/criar_evento/localizacao"></Link>;
-  }
+  
 
   return (
     <FormPage>
@@ -25,7 +26,7 @@ function Form() {
         <Navbar />
       </header>
       <div className="container titulo-pagina">
-        <h2>Rota da Lampreia</h2>
+        <h2>{state.Evento.nome}</h2>
       </div>
       <main>
         <div className="container">

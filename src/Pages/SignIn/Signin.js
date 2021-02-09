@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { InputGroup } from "../../Components/Input/Input";
+import { InputGroupFloat } from "../../Components/Input/Input";
 import LogoBlack from "../../Assets/Images/penacova_logo.svg";
 import LogoWhite from "../../Assets/Images/penacova_logo_white.svg";
 import { Body } from "./Style";
@@ -40,7 +40,7 @@ function Signin() {
       </header>
       <main className="center">
         <div className="col-lg-3 col-10">
-          <InputGroup>
+          <InputGroupFloat>
             <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
               <div className="form-floating mb-3">
                 <input
@@ -66,7 +66,7 @@ function Signin() {
               </div>
               <PrimaryButton type="submit">Sign In</PrimaryButton>
             </form>
-          </InputGroup>
+          </InputGroupFloat>
         </div>
       </main>
       <footer>

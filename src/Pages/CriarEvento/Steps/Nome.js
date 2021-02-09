@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../UpdateState/UpdateState";
 import { PageNomeModalidade } from "./Style";
-import { InputGroup } from "../../../Components/Input/Input";
+import { InputGroupFloat } from "../../../Components/Input/Input";
 import { PrimaryButton } from "../../../Components/Button/Button";
 
 function InserirNome() {
@@ -46,7 +46,7 @@ function InserirNome() {
           </div>
           <div className="row">
             <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
-              <InputGroup>
+              <InputGroupFloat>
                 <div className="form-floating mb-3">
                   <input
                     onChange={onChangeNome}
@@ -59,7 +59,7 @@ function InserirNome() {
                   />
                   <label htmlFor="floatingInput">Nome do Evento </label>
                 </div>
-              </InputGroup>
+              </InputGroupFloat>
 
               <div className="d-flex justify-content-end">
                 <div>
