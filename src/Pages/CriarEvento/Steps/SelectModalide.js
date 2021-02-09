@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../../Components/Navbar/Navbar";
 import { PageNomeModalidade, Card, Border } from "./Style";
 import { BiCheck } from "react-icons/bi";
@@ -9,14 +9,32 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../UpdateState/UpdateState";
+import axios from "axios";
 
 function SelectModalidade() {
+  const [modalidades, setModalidades] = useState([]);
   const { state, actions } = useStateMachine({ updateAction });
   const { handleSubmit, register } = useForm({
     defaultValues: state.Evento,
   });
   const { push } = useHistory();
 
+  useEffect(() => {
+    axios
+      .get("http://192.168.1.101:8000/admin/modalidades")
+      .then((response) => {
+        setModalidades(response.data.data);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          if (error.response === 404) {
+            //Adicionar Erro na Página
+          }
+        }
+      });
+  }, []);
+
+  console.log(modalidades);
 
   return (
     <PageNomeModalidade>
