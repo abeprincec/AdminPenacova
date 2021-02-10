@@ -52,7 +52,7 @@ export const InputForm = styled.input`
   font-size: 14px;
   color: #dbdbdb; //Cor a ser Adicionada ao Tema
   padding-left: 14px;
-  padding-right: 14px;
+  padding-right: 14px ;
   padding-bottom: 12px;
   line-height: 28px;
   width: 100%;
@@ -72,11 +72,46 @@ export const InputSelect = styled.select`
   background-color: ${({ theme }) => theme.cardColor};
   border: none;
   outline: 0;
-  padding-top: 12px;
+  padding-right:14px !important;
+  padding-top: 14px;
   padding-left: 14px;
-  
-  padding-bottom: 12px;
+  font-size: 14px;
+  height: 53px;
+  padding-bottom: 14px;
   color: #dbdbdb; //Cor a ser Adicionada ao Tema
 `;
 
 export const OptionSelect = styled.option``;
+
+export const TextArea = styled.textarea`
+  resize: vertical;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.cardColor};
+  border: none;
+  outline: 0;
+  padding-top: 12px;
+  font-size: 14px;
+  color: #dbdbdb; //Cor a ser Adicionada ao Tema
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-bottom: 12px;
+  line-height: 28px;
+  width: 100%;
+  min-height: 300px;
+`;
+
+export const InputFile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #3b3b3b;
+  border-style: dashed;
+  background-color: ${({ theme }) => theme.cardColor};
+  color: #bdbdbd;
+  outline: none;
+  transition: border 0.24s ease-in-out;
+  font-size: 14px;
+`;

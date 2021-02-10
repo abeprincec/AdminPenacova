@@ -18,8 +18,6 @@ function Form() {
   const { path } = useRouteMatch();
   const location = useLocation();
 
-  
-
   return (
     <FormPage>
       <header>
@@ -48,46 +46,16 @@ function Form() {
                 5. Resumo
               </NavLink>
             </div>
-            <div>
-              {location.pathname === "/criar_evento/dados_evento" && (
-                <Link style={{ color: "white" }} to="/criar_evento/localizacao">
-                  <div className="round-shape">
-                    <BsArrowRightShort size="26" />
-                  </div>
-                </Link>
-              )}
-              {location.pathname === "/criar_evento/localizacao" && (
-                <Link style={{ color: "white" }} to="/criar_evento/escaloes">
-                  <div className="round-shape">
-                    <BsArrowRightShort size="26" />
-                  </div>
-                </Link>
-              )}
-              {location.pathname === "/criar_evento/escaloes" && (
-                <Link style={{ color: "white" }} to="/criar_evento/precario">
-                  <div className="round-shape">
-                    <BsArrowRightShort size="26" />
-                  </div>
-                </Link>
-              )}
-              {location.pathname === "/criar_evento/precario" && (
-                <Link style={{ color: "white" }} to="/criar_evento/resumo">
-                  <div className="round-shape">
-                    <BsArrowRightShort size="26" />
-                  </div>
-                </Link>
-              )}
-            </div>
           </div>
-          <div className="tabs">
-            <Switch>
-              <Route path={`${path}/dados_evento`} exact component={Dados} />
-              <Route path={`${path}/localizacao`} component={Localizacao} />
-              <Route path={`${path}/escaloes`} component={Escaloes} />
-              <Route path={`${path}/precario`} component={Precario} />
-              <Route path={`${path}/resumo`} component={Resumo} />
-            </Switch>
-          </div>
+        </div>
+        <div className="tabs">
+          <Switch>
+            <Route path={`${path}/dados_evento`} exact component={Dados} />
+            <Route path={`${path}/localizacao`} component={Localizacao} />
+            <Route path={`${path}/escaloes`} component={Escaloes} />
+            <Route path={`${path}/precario`} component={Precario} />
+            <Route path={`${path}/resumo`} component={Resumo} />
+          </Switch>
         </div>
       </main>
     </FormPage>

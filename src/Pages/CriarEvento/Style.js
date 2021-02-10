@@ -6,6 +6,11 @@ export const FormPage = styled.div`
     background-color: #0d0d0d;
   }
 
+  main {
+    margin-top: 40px;
+  }
+  padding-bottom: 180px;
+
   .titulo-pagina {
     margin-top: -130px;
   }
@@ -14,7 +19,22 @@ export const FormPage = styled.div`
     margin-top: 67px;
     justify-content: space-between;
     display: flex;
-    
+  }
+
+  .input-mask {
+    resize: vertical;
+    border-radius: 4px;
+    background-color: ${({ theme }) => theme.cardColor};
+    border: none;
+    outline: 0;
+    padding-top: 12px;
+    font-size: 14px;
+    color: #dbdbdb; //Cor a ser Adicionada ao Tema
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 12px;
+    line-height: 28px;
+    width: 100%;
   }
 
   .link {
@@ -30,7 +50,7 @@ export const FormPage = styled.div`
   }
 
   .round-shape {
-    padding:10px;
+    padding: 10px;
     background-color: #3ca661;
     border-radius: 50%;
   }
