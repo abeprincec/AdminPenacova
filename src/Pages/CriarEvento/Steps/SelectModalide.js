@@ -53,7 +53,7 @@ function SelectModalidade() {
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="list-modalidade">
             <div className="row row-cols-1 row-cols-md-3 row-cols-lg-6 list-modalidades">
-              {modalidades.slice(0, 5).map((modalidade, index) => (
+              {modalidades.slice(0, 6).map((modalidade, index) => (
                 <Select
                   refs={register}
                   ids={modalidade.id}

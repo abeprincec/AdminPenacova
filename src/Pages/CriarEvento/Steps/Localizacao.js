@@ -1,16 +1,7 @@
 import React from "react";
-import {
-  InputGroup,
-  InputForm,
-  InputLabel,
-  TextArea,
-  InputFile,
-  InputSelect,
-  OptionSelect,
-} from "../../../Components/Input/Input";
+import { InputGroup, InputForm, InputLabel, InputSelect, OptionSelect } from "../../../Components/Input/Input";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../UpdateState/UpdateState";
-import { useDropzone } from "react-dropzone";
 import { Controller, useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { PrimaryButton } from "../../../Components/Button/Button";
@@ -94,7 +85,7 @@ function Localizacao() {
               <InputSelect ref={register} placeholder="Selecionar um Distrito" type="text" name="distrito">
                 <OptionSelect disabled>Selecionar um Distrito</OptionSelect>
                 {Distritos.map((distrito, index) => (
-                  <OptionSelect  key={index} value={distrito}>
+                  <OptionSelect key={index} value={distrito}>
                     {distrito}
                   </OptionSelect>
                 ))}
