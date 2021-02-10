@@ -10,7 +10,7 @@ function Escaloes() {
   return (
     <main>
       <div className="container">
-        <form autoComplete="anyrandomstring" name="test">
+        <form >
           <div className="row">
             <div className="col-md">
               <InputGroup>
@@ -20,14 +20,14 @@ function Escaloes() {
             </div>
             <div className="col-md">
               <InputGroup>
-                <InputLabel htmlFor="nomeCategoria">Nome da Categoria</InputLabel>
-                <InputForm type="text" id="nomeCategoria" name="nome" placeholder="Ex: Maratona" />
+                <InputLabel htmlFor="descricaoCategoria">Nome da Categoria</InputLabel>
+                <InputForm type="text" id="descricaoCategoria" name="nome" placeholder="Ex: Maratona" />
               </InputGroup>
             </div>
             <div className="col-md">
               <InputGroup>
-                <InputLabel htmlFor="nomeCategoria">Nome da Categoria</InputLabel>
-                <InputForm type="text" id="nomeCategoria" name="nome" placeholder="Ex: Maratona" />
+                <InputLabel htmlFor="tipoAtleta">Nome da Categoria</InputLabel>
+                <InputForm type="text" id="tipoAtleta" name="nome" placeholder="Ex: Maratona" />
               </InputGroup>
             </div>
           </div>
