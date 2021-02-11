@@ -60,7 +60,6 @@ function InserirNome() {
                   <label htmlFor="floatingInput">Nome do Evento </label>
                 </div>
               </InputGroupFloat>
-
               <div className="d-flex justify-content-end">
                 <div>
                   <PrimaryButton style={{ width: 130, backgroundColor: "#191919", marginRight: 16 }}>Voltar</PrimaryButton>

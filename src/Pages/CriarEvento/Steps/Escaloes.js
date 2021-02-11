@@ -1,18 +1,19 @@
 import React, { useState, useRef } from "react";
-import { InputGroup, InputForm, InputLabel, InputSelect, OptionSelect } from "../../../Components/Input/Input";
+import { InputGroup, InputForm, InputLabel, InputSelect, OptionSelect, TextArea } from "../../../Components/Input/Input";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../UpdateState/UpdateState";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { PrimaryButton } from "../../../Components/Button/Button";
-import { BiPlus, BiTrash } from "react-icons/bi";
+import { BiPlus, BiTrash, BiX } from "react-icons/bi";
 
 function Escaloes() {
   const { state, actions } = useStateMachine({ updateAction });
   const [indexes, setIndexes] = useState([]);
   const [contador, setContador] = useState(0);
   const [save, setSave] = useState(false);
-  const { register, handleSubmit } = useForm({
+  const [isOpen, setIsOpen] = useState(false);
+  const { register, handleSubmit, errors } = useForm({
     defaultValues: state.Evento,
   });
   const { push } = useHistory();
@@ -25,39 +26,60 @@ function Escaloes() {
   const RemoverEscalao = (index) => () => {
     setIndexes((prevIndexes) => [...prevIndexes.filter((item) => item !== index)]);
     setContador((prevCounter) => prevCounter - 1);
+    actions.updateAction({ categorias: [] });
   };
 
   const onSubmit = (data) => {
     actions.updateAction(data);
     setSave(true);
-    
   };
 
   const Avancar = () => {
     console.log(state);
     return push("/criar_evento/precario");
-    
   };
 
-  
+  const AtivarDescricao = () => {
+    setIsOpen(true);
+  };
+
+  const RemoverDescricao = () => {
+    setIsOpen(false);
+  };
+
   return (
     <main>
       <div className="container">
         <div style={{ marginTop: 60 }} className="col-lg mb-5">
           {indexes.length < 1 ? (
-            <div className="mb-4">
-              <button onClick={AdicionarEscalao} className="add-buton">
+            <div type="button" onClick={AdicionarEscalao} className="mb-4">
+              <button className="add-buton">
                 <BiPlus size="20" />
               </button>
               <span style={{ marginLeft: 12, fontSize: 14, fontWeight: 300 }}>Adicionar Escalão</span>
             </div>
           ) : null}
-          <div>
-            <button className="add-buton">
-              <BiPlus size="20" />
-            </button>
-            <span style={{ marginLeft: 12, fontSize: 14, fontWeight: 300 }}>Adicionar Descrição</span>
-          </div>
+          {isOpen === true ? (
+            <span type="button" className="remove-descricao" onClick={RemoverDescricao}>
+              <BiX size="20" style={{ marginRight: 10, marginTop: -3 }} />
+              Fechar
+            </span>
+          ) : (
+            <div type="button" onClick={AtivarDescricao}>
+              <button className="add-buton">
+                <BiPlus size="20" />
+              </button>
+              <span style={{ marginLeft: 12, fontSize: 14, fontWeight: 300 }}>Adicionar Descrição</span>
+            </div>
+          )}
+        </div>
+        <div className="mb-5">
+          {isOpen === true ? (
+            <InputGroup>
+              <InputLabel>Descrição</InputLabel>
+              <TextArea  ref={register} name="descricaocategoria" placeholder="Inserir uma Descrição"/>
+            </InputGroup>
+          ) : null}
         </div>
         {indexes.map((index) => {
           return (
@@ -68,6 +90,7 @@ function Escaloes() {
                   <InputForm
                     ref={register({ required: true })}
                     autoComplete="new-password"
+                    className={`${errors.nomeCategoria ? "is-invalid" : ""}`}
                     type="text"
                     name={`categorias[${index}].nomeCategoria`}
                     id="nomeCategoria"
@@ -75,6 +98,7 @@ function Escaloes() {
                   />
                 </InputGroup>
               </div>
+
               <div className="col-md">
                 <InputGroup>
                   <InputLabel htmlFor="descricaoCategoria">Descrição da Categoria {index}</InputLabel>
@@ -103,17 +127,17 @@ function Escaloes() {
                   </InputSelect>
                 </InputGroup>
               </div>
-              <button type="button" className="remove-escalao"  onClick={RemoverEscalao(index)}>
+              <span type="button" className="remove-escalao" onClick={RemoverEscalao(index)}>
                 <BiTrash size="20" style={{ marginRight: 10, marginTop: -3 }} />
                 Eliminar
-              </button>
+              </span>
             </div>
           );
         })}
 
         {indexes.length >= 1 ? (
           <div className="d-flex justify-content-end">
-            <span className="add-escalao" type="submit" onClick={AdicionarEscalao}>
+            <span className="add-escalao" type="button" onClick={AdicionarEscalao}>
               <BiPlus size="20" style={{ marginRight: 10, marginTop: -3 }} />
               Adicionar outro escalão
             </span>

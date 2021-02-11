@@ -33,7 +33,6 @@ createStore({
     valorfederado: null,
     valornaofederado: null,
     valorrefeicao: null,
-    categorias: [],
   },
 });
 

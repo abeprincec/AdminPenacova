@@ -40,6 +40,11 @@ export const InputGroup = styled.div`
   :last-child {
     margin-bottom: 0;
   }
+
+  .is-invalid-input{
+    background-color:red;
+  }
+
 `;
 
 export const InputForm = styled.input`
@@ -56,6 +61,7 @@ export const InputForm = styled.input`
   padding-bottom: 12px;
   line-height: 28px;
   width: 100%;
+ 
 `;
 
 export const InputLabel = styled.label`

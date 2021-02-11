@@ -72,7 +72,6 @@ export const FormPage = styled.div`
   .add-escalao {
     font-size: 13px;
     font-weight: 300;
-    
   }
 
   .remove-escalao {
@@ -83,6 +82,20 @@ export const FormPage = styled.div`
     color: #ee6f6f;
     opacity: 0.8;
     margin-bottom: 20px;
+    :hover {
+      opacity: 1;
+    }
+  }
+
+  .remove-descricao {
+    float: right;
+    font-size: 13px;
+    font-weight: 300;
+    color: #ee6f6f;
+    opacity: 0.8;
+    align-items: center;
+    display:flex;
+
     :hover {
       opacity: 1;
     }
