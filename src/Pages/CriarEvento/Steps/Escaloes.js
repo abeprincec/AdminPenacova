@@ -11,9 +11,11 @@ function Escaloes() {
   const { state, actions } = useStateMachine({ updateAction });
   const [indexes, setIndexes] = useState([]);
   const [contador, setContador] = useState(0);
+  const [save, setSave] = useState(false);
   const { register, handleSubmit } = useForm({
     defaultValues: state.Evento,
   });
+  const { push } = useHistory();
 
   const AdicionarEscalao = () => {
     setIndexes((prevIndexes) => [...prevIndexes, contador]);
@@ -27,10 +29,17 @@ function Escaloes() {
 
   const onSubmit = (data) => {
     actions.updateAction(data);
+    setSave(true);
+    
   };
-  console.log("Data:", state);
-  console.log(indexes);
 
+  const Avancar = () => {
+    console.log(state);
+    return push("/criar_evento/precario");
+    
+  };
+
+  
   return (
     <main>
       <div className="container">
@@ -57,7 +66,7 @@ function Escaloes() {
                 <InputGroup>
                   <InputLabel htmlFor="tipoAtleta">Nome da Categoria {index}</InputLabel>
                   <InputForm
-                    ref={register}
+                    ref={register({ required: true })}
                     autoComplete="new-password"
                     type="text"
                     name={`categorias[${index}].nomeCategoria`}
@@ -70,7 +79,7 @@ function Escaloes() {
                 <InputGroup>
                   <InputLabel htmlFor="descricaoCategoria">Descrição da Categoria {index}</InputLabel>
                   <InputForm
-                    ref={register}
+                    ref={register({ required: true })}
                     autoComplete="new-password"
                     type="text"
                     id="descricaoCategoria"
@@ -83,7 +92,7 @@ function Escaloes() {
                 <InputGroup>
                   <InputLabel>Tipo de Atleta {index}</InputLabel>
                   <InputSelect
-                    ref={register}
+                    ref={register({ required: true })}
                     name={`categorias[${index}].tipoAtleta`}
                     placeholder="Selecionar Tipo de Atleta"
                     type="text"
@@ -94,10 +103,10 @@ function Escaloes() {
                   </InputSelect>
                 </InputGroup>
               </div>
-              <span className="remove-escalao" type="submit" onClick={RemoverEscalao(index)}>
+              <button type="button" className="remove-escalao"  onClick={RemoverEscalao(index)}>
                 <BiTrash size="20" style={{ marginRight: 10, marginTop: -3 }} />
                 Eliminar
-              </span>
+              </button>
             </div>
           );
         })}
@@ -113,9 +122,16 @@ function Escaloes() {
       </div>
       <div className="container-fluid">
         <div className="d-flex justify-content-end">
-          <PrimaryButton onClick={handleSubmit(onSubmit)} style={{ width: 130, position: "fixed", bottom: "8%", right: "5%" }}>
-            Avançar
-          </PrimaryButton>
+          {save === false ? (
+            <PrimaryButton onClick={handleSubmit(onSubmit)} style={{ width: 130, position: "fixed", bottom: "8%", right: "5%" }}>
+              Guardar
+            </PrimaryButton>
+          ) : null}
+          {save === true ? (
+            <PrimaryButton onClick={Avancar} style={{ width: 130, position: "fixed", bottom: "8%", right: "5%" }}>
+              Avançar
+            </PrimaryButton>
+          ) : null}
         </div>
       </div>
     </main>
