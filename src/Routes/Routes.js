@@ -33,6 +33,7 @@ createStore({
     valorfederado: null,
     valornaofederado: null,
     valorrefeicao: null,
+    Categorias: [],
   },
 });
 
@@ -42,7 +43,7 @@ function Routes() {
       <Router>
         <AuthProvider>
           <Switch>
-            <PrivateRoute  path="/criar_evento" component={FormEvento} />
+            <PrivateRoute path="/criar_evento" component={FormEvento} />
             <PrivateRoute exact path="/criarevento/select_modalidade" component={SelectModalide} />
             <PrivateRoute exact path="/criarevento/inserir_nome" component={NomeEvento} />
             <PrivateRoute exact path="/" component={Dashboard} />

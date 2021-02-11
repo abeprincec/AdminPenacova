@@ -73,7 +73,12 @@ body {
 	font-family: 'Poppins', sans-serif;
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
+	
   }
+
+  ::-webkit-scrollbar {
+    display: none;
+}
 
 .container-fluid{
 	padding-left: 5%;
