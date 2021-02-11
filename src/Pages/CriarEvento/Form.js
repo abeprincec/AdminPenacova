@@ -24,7 +24,7 @@ function Form() {
         <Navbar />
       </header>
       <div className="container titulo-pagina">
-        <h2>{state.Evento.nome}</h2>
+        <h2>{state.Evento.nomeEvento}</h2>
       </div>
       <main>
         <div className="container">

@@ -11,7 +11,7 @@ import { StateMachineProvider, createStore } from "little-state-machine";
 
 createStore({
   Evento: {
-    nome: "",
+    nomeEvento: "",
     subtitulo: "",
     curtadescricao: "",
     longadescricao: "",

@@ -74,11 +74,11 @@ function Localizacao() {
             </InputGroup>
             <InputGroup>
               <InputLabel>Localidade </InputLabel>
-              <InputForm ref={register} type="text" autocomplete="off" name="localidade" placeholder="Ex: Avenida 5 Outubro" />
+              <InputForm ref={register} type="text"  name="localidade" placeholder="Ex: Avenida 5 Outubro" />
             </InputGroup>
             <InputGroup>
               <InputLabel>Concelho</InputLabel>
-              <InputForm ref={register} type="text" autocomplete="off" name="concelho" placeholder="Ex: Avenida 5 Outubro" />
+              <InputForm ref={register} type="text"  name="concelho" placeholder="Ex: Avenida 5 Outubro" />
             </InputGroup>
             <InputGroup>
               <InputLabel>Distrito</InputLabel>
@@ -93,11 +93,11 @@ function Localizacao() {
             </InputGroup>
             <InputGroup>
               <InputLabel>Latitude</InputLabel>
-              <InputForm ref={register} type="text" autocomplete="off" name="latitude" placeholder="Ex: Avenida 5 Outubro" />
+              <InputForm ref={register} type="text"  name="latitude" placeholder="Ex: Avenida 5 Outubro" />
             </InputGroup>
             <InputGroup>
               <InputLabel>Longitude</InputLabel>
-              <InputForm ref={register} type="text" autocomplete="off" name="longitude" placeholder="Ex: Avenida 5 Outubro" />
+              <InputForm ref={register} type="text"  name="longitude" placeholder="Ex: Avenida 5 Outubro" />
             </InputGroup>
           </form>
         </div>

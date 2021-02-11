@@ -44,7 +44,7 @@ function DadosdoEvento() {
           <form autoComplete="off">
             <InputGroup>
               <InputLabel htmlFor="nomeEvento">Nome do Evento</InputLabel>
-              <InputForm type="text" id="nomeEvento" name="nome" defaultValue={state.Evento.nome} />
+              <InputForm type="text" id="nomeEvento" name="nomeEvento" defaultValue={state.Evento.nomeEvento} />
             </InputGroup>
             <InputGroup>
               <InputLabel htmlFor="subtituloEvento">Subtitulo do Evento</InputLabel>

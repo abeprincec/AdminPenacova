@@ -59,4 +59,18 @@ export const FormPage = styled.div`
     border-bottom: 2.5px solid #3ca661;
     opacity: 1;
   }
+
+  .add-buton {
+    padding: 12px;
+    background-color: #3ca661;
+    border-radius: 50%;
+    outline: 0;
+    border: none;
+    color: #dbdbdb;
+  }
+
+  .add-escalao {
+    font-size: 13px;
+    font-weight: 300;
+  }
 `;

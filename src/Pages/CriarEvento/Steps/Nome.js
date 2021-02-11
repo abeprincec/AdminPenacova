@@ -54,7 +54,7 @@ function InserirNome() {
                     className={`form-control ${errors.nome ? "is-invalid" : ""}`}
                     id="floatingInput"
                     placeholder="E-mail"
-                    name="nome"
+                    name="nomeEvento"
                     ref={register({ required: true })}
                   />
                   <label htmlFor="floatingInput">Nome do Evento </label>
