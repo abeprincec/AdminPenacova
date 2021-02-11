@@ -2,14 +2,12 @@ import React, { useState, useRef } from "react";
 import { InputGroup, InputForm, InputLabel, InputSelect, OptionSelect } from "../../../Components/Input/Input";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../UpdateState/UpdateState";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { PrimaryButton } from "../../../Components/Button/Button";
-import { BiPlus } from "react-icons/bi";
+import { BiPlus, BiTrash } from "react-icons/bi";
 
 function Escaloes() {
-  const nomeCampo = useRef([]);
-  const [categorias, setCategorias] = useState([]);
   const { state, actions } = useStateMachine({ updateAction });
   const [indexes, setIndexes] = useState([]);
   const [contador, setContador] = useState(0);
@@ -17,32 +15,44 @@ function Escaloes() {
     defaultValues: state.Evento,
   });
 
-  console.log(state.Evento.Categorias);
-
-  const onSubmit = (data) => {
-    console.log(data);
-    //console.log(state);
-    console.log(categorias)
-  };
-
   const AdicionarEscalao = () => {
     setIndexes((prevIndexes) => [...prevIndexes, contador]);
     setContador((prevContador) => prevContador + 1);
   };
 
+  const RemoverEscalao = (index) => () => {
+    setIndexes((prevIndexes) => [...prevIndexes.filter((item) => item !== index)]);
+    setContador((prevCounter) => prevCounter - 1);
+  };
+
+  const onSubmit = (data) => {
+    actions.updateAction(data);
+  };
+  console.log("Data:", state);
+  console.log(indexes);
+
   return (
     <main>
       <div className="container">
         <div style={{ marginTop: 60 }} className="col-lg mb-5">
-          <button className="add-buton">
-            <BiPlus size="20" />
-          </button>
-          <span style={{ marginLeft: 12, fontSize: 14, fontWeight: 300 }}>Adicionar Descrição</span>
+          {indexes.length < 1 ? (
+            <div className="mb-4">
+              <button onClick={AdicionarEscalao} className="add-buton">
+                <BiPlus size="20" />
+              </button>
+              <span style={{ marginLeft: 12, fontSize: 14, fontWeight: 300 }}>Adicionar Escalão</span>
+            </div>
+          ) : null}
+          <div>
+            <button className="add-buton">
+              <BiPlus size="20" />
+            </button>
+            <span style={{ marginLeft: 12, fontSize: 14, fontWeight: 300 }}>Adicionar Descrição</span>
+          </div>
         </div>
         {indexes.map((index) => {
-          const  nomeCampo = state.Evento.Categorias;
           return (
-            <div key={index} name={nomeCampo} className="row mb-4">
+            <div key={index} className="row">
               <div className="col-md">
                 <InputGroup>
                   <InputLabel htmlFor="tipoAtleta">Nome da Categoria {index}</InputLabel>
@@ -50,8 +60,8 @@ function Escaloes() {
                     ref={register}
                     autoComplete="new-password"
                     type="text"
+                    name={`categorias[${index}].nomeCategoria`}
                     id="nomeCategoria"
-                    name={`${nomeCampo}.nomeCategoria`}
                     placeholder="Ex: Maratona"
                   />
                 </InputGroup>
@@ -64,7 +74,7 @@ function Escaloes() {
                     autoComplete="new-password"
                     type="text"
                     id="descricaoCategoria"
-                    name={`${nomeCampo}.descricao`}
+                    name={`categorias[${index}].descricaoCategoria`}
                     placeholder="Ex: Júniores Masculinos"
                   />
                 </InputGroup>
@@ -74,9 +84,9 @@ function Escaloes() {
                   <InputLabel>Tipo de Atleta {index}</InputLabel>
                   <InputSelect
                     ref={register}
+                    name={`categorias[${index}].tipoAtleta`}
                     placeholder="Selecionar Tipo de Atleta"
                     type="text"
-                    name={`${nomeCampo}.tipoAtleta`}
                   >
                     <OptionSelect defaultValue>Selecionar Tipo de Atleta </OptionSelect>
                     <OptionSelect value={1}>Atleta Federado</OptionSelect>
@@ -84,15 +94,22 @@ function Escaloes() {
                   </InputSelect>
                 </InputGroup>
               </div>
+              <span className="remove-escalao" type="submit" onClick={RemoverEscalao(index)}>
+                <BiTrash size="20" style={{ marginRight: 10, marginTop: -3 }} />
+                Eliminar
+              </span>
             </div>
           );
         })}
-        <div className="d-flex justify-content-end">
-          <span className="add-escalao" type="submit" onClick={AdicionarEscalao}>
-            <BiPlus size="20" style={{ marginRight: 10, marginTop: -3 }} />
-            Adicionar outro escalão
-          </span>
-        </div>
+
+        {indexes.length >= 1 ? (
+          <div className="d-flex justify-content-end">
+            <span className="add-escalao" type="submit" onClick={AdicionarEscalao}>
+              <BiPlus size="20" style={{ marginRight: 10, marginTop: -3 }} />
+              Adicionar outro escalão
+            </span>
+          </div>
+        ) : null}
       </div>
       <div className="container-fluid">
         <div className="d-flex justify-content-end">

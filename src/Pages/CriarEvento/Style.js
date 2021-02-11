@@ -72,5 +72,19 @@ export const FormPage = styled.div`
   .add-escalao {
     font-size: 13px;
     font-weight: 300;
+    
+  }
+
+  .remove-escalao {
+    float: right;
+    margin-top: 25px;
+    font-size: 13px;
+    font-weight: 300;
+    color: #ee6f6f;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    :hover {
+      opacity: 1;
+    }
   }
 `;
