@@ -12,7 +12,7 @@ import Localizacao from "./Steps/Localizacao";
 import Escaloes from "./Steps/Escaloes";
 import Precario from "./Steps/Precario";
 import Resumo from "./Steps/Resumo";
-import EscaloesFilled from "./Steps/EscaloesFilled";
+
 
 function Form() {
   const { state, actions } = useStateMachine({ updateAction });

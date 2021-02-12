@@ -33,13 +33,7 @@ createStore({
     valorfederado: 0,
     valornaofederado: 0,
     valorrefeicao: 0,
-    categorias: [
-      {
-        nomeCategoria: "",
-        descricaoCategoria: "",
-        tipoAtleta: null,
-      },
-    ],
+    categorias: [],
   },
 });
 

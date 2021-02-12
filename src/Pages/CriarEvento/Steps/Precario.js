@@ -43,6 +43,7 @@ function Escaloes() {
 
     actions.updateAction(data);
     console.log(data);
+    return push("/criar_evento/resumo")
     
   };
   console.log(state);

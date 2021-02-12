@@ -12,7 +12,6 @@ function Escaloes() {
   const [indexes, setIndexes] = useState([]);
   const [data, setData] = useState(state.Evento.categorias);
   const [contador, setContador] = useState(0);
-  const [save, setSave] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { register, handleSubmit, errors } = useForm({
     defaultValues: state.Evento,
@@ -32,11 +31,6 @@ function Escaloes() {
 
   const onSubmit = (data) => {
     actions.updateAction(data);
-    setSave(true);
-  };
-
-  const Avancar = () => {
-    console.log(state);
     return push("/criar_evento/precario");
   };
 
@@ -82,7 +76,7 @@ function Escaloes() {
             </InputGroup>
           ) : null}
         </div>
-        
+
         {indexes.map((index) => {
           return (
             <div key={index} className="row">
@@ -149,16 +143,9 @@ function Escaloes() {
       </div>
       <div className="container-fluid">
         <div className="d-flex justify-content-end">
-          {save === false ? (
-            <PrimaryButton onClick={handleSubmit(onSubmit)} style={{ width: 130, position: "fixed", bottom: "8%", right: "5%" }}>
-              Guardar
-            </PrimaryButton>
-          ) : null}
-          {save === true ? (
-            <PrimaryButton onClick={Avancar} style={{ width: 130, position: "fixed", bottom: "8%", right: "5%" }}>
-              Avançar
-            </PrimaryButton>
-          ) : null}
+          <PrimaryButton onClick={handleSubmit(onSubmit)} style={{ width: 130, position: "fixed", bottom: "8%", right: "5%" }}>
+            Avançar
+          </PrimaryButton>
         </div>
       </div>
     </main>
