@@ -49,10 +49,11 @@ function Routes() {
       <Router>
         <AuthProvider>
           <Switch>
-            <Route path="/criar_evento" component={FormEvento} />
-            <Route exact path="/criarevento/select_modalidade" component={SelectModalide} />
-            <Route exact path="/criarevento/inserir_nome" component={NomeEvento} />
-            <Route exact path="/" component={Dashboard} />
+            <PrivateRoute path="/criar_evento" component={FormEvento} />
+            <PrivateRoute path="/criar_evento" component={FormEvento} />
+            <PrivateRoute exact path="/criarevento/select_modalidade" component={SelectModalide} />
+            <PrivateRoute exact path="/criarevento/inserir_nome" component={NomeEvento} />
+            <PrivateRoute exact path="/" component={Dashboard} />
             <Route exact path="/signin" component={Signin} />
           </Switch>
         </AuthProvider>
