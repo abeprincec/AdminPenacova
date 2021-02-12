@@ -30,6 +30,7 @@ function Escaloes() {
   };
 
   const onSubmit = (data) => {
+    
     actions.updateAction(data);
     setSave(true);
   };

@@ -1,5 +1,13 @@
 import React, { useState, useRef } from "react";
-import { InputGroup, InputForm, InputLabel, InputSelect, OptionSelect, TextArea } from "../../../Components/Input/Input";
+import {
+  InputGroup,
+  InputForm,
+  InputLabel,
+  InputSelect,
+  OptionSelect,
+  TextArea,
+  Checkbox,
+} from "../../../Components/Input/Input";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../UpdateState/UpdateState";
 import { useForm } from "react-hook-form";
@@ -9,19 +17,35 @@ import { BiPlus, BiTrash, BiX } from "react-icons/bi";
 
 function Escaloes() {
   const { state, actions } = useStateMachine({ updateAction });
-  const [indexes, setIndexes] = useState([]);
-  const [contador, setContador] = useState(0);
-  const [save, setSave] = useState(false);
-
-  const { register, handleSubmit, errors } = useForm({
+  const [checkFederado, setCheckFederado] = useState(false);
+  const [checkNaoFederado, setCheckNaoFederado] = useState(false);
+  const { register, handleSubmit, errors, watch } = useForm({
     defaultValues: state.Evento,
   });
+  const precoFederado = watch("precoFederado");
+  const precoNaoFederado = watch("precoNaoFederado");
+  const refeicao = watch("refeicao");
   const { push } = useHistory();
 
   const onSubmit = (data) => {
+    if (data.valorfederado === "") {
+      data.valorfederado = 0
+    }
+    if (data.valornaofederado === "") {
+      data.valornaofederado = 0;
+    }
+    if (data.valorrefeicao === "") {
+      data.valorrefeicao = 0;
+    }
+    data.valorfederado = parseInt(data.valorfederado);
+    data.valornaofederado = parseInt(data.valornaofederado);
+    data.valorrefeicao = parseInt(data.valorrefeicao);
+
     actions.updateAction(data);
-    setSave(true);
+    console.log(data);
+    
   };
+  console.log(state);
 
   return (
     <main>
@@ -35,11 +59,32 @@ function Escaloes() {
           </div>
         </div>
         <ul>
+          <li className="mb-4">
+            <InputGroup>
+              <InputLabel>Preço Federado</InputLabel>
+              <InputForm id="valorfederado" name="valorfederado" ref={register} type="number" placeholder="Ex: 10€" />
+            </InputGroup>
+          </li>
+          <li className="mb-4">
+            <InputGroup>
+              <InputLabel>Preço Não Federado</InputLabel>
+              <InputForm id="valornaofederado" name="valornaofederado" ref={register} type="number" placeholder="Ex: 15€" />
+            </InputGroup>
+          </li>
           <li>
-            <input id="c1" type="checkbox" />
-            <label for="c1">Checkbox</label>
+            <InputGroup>
+              <InputLabel>Preço Refeição</InputLabel>
+              <InputForm name="valorrefeicao" id="valorrefeicao" ref={register} type="number" placeholder="Ex: 5€" />
+            </InputGroup>
           </li>
         </ul>
+      </div>
+      <div className="container-fluid">
+        <div className="d-flex justify-content-end">
+          <PrimaryButton onClick={handleSubmit(onSubmit)} style={{ width: 130, position: "fixed", bottom: "5%", right: "5%" }}>
+            Avançar
+          </PrimaryButton>
+        </div>
       </div>
     </main>
   );

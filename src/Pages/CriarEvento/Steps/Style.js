@@ -14,11 +14,9 @@ export const PageNomeModalidade = styled.div`
     margin-top: 125px;
   }
 
-   .list-modalidade{
-    margin-top:80px;
+  .list-modalidade {
+    margin-top: 80px;
   }
-
-  
 `;
 
 export const Border = styled.div`
@@ -46,7 +44,6 @@ export const Card = styled.label`
   justify-content: center;
   align-items: center;
   display: flex;
-  
 
   input[type="radio"] {
     display: none;
@@ -72,4 +69,6 @@ export const Card = styled.label`
     top: 12%;
     right: 0;
   }
+
+  
 `;

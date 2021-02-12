@@ -30,9 +30,16 @@ createStore({
     maxinscritos: null,
     idmodalidade: 0,
     visivel: null,
-    valorfederado: null,
-    valornaofederado: null,
-    valorrefeicao: null,
+    valorfederado: 0,
+    valornaofederado: 0,
+    valorrefeicao: 0,
+    categorias: [
+      {
+        nomeCategoria: "",
+        descricaoCategoria: "",
+        tipoAtleta: null,
+      },
+    ],
   },
 });
 

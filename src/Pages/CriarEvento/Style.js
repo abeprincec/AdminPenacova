@@ -94,10 +94,17 @@ export const FormPage = styled.div`
     color: #ee6f6f;
     opacity: 0.8;
     align-items: center;
-    display:flex;
+    display: flex;
 
     :hover {
       opacity: 1;
     }
+  }
+
+  .item-precario {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
   }
 `;
