@@ -12,6 +12,7 @@ import Localizacao from "./Steps/Localizacao";
 import Escaloes from "./Steps/Escaloes";
 import Precario from "./Steps/Precario";
 import Resumo from "./Steps/Resumo";
+import EscaloesFilled from "./Steps/EscaloesFilled";
 
 function Form() {
   const { state, actions } = useStateMachine({ updateAction });
@@ -53,6 +54,7 @@ function Form() {
             <Route path={`${path}/dados_evento`} exact component={Dados} />
             <Route path={`${path}/localizacao`} component={Localizacao} />
             <Route path={`${path}/escaloes`} component={Escaloes} />
+
             <Route path={`${path}/precario`} component={Precario} />
             <Route path={`${path}/resumo`} component={Resumo} />
           </Switch>

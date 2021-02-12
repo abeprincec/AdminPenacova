@@ -10,6 +10,7 @@ import { BiPlus, BiTrash, BiX } from "react-icons/bi";
 function Escaloes() {
   const { state, actions } = useStateMachine({ updateAction });
   const [indexes, setIndexes] = useState([]);
+  const [data, setData] = useState(state.Evento.categorias);
   const [contador, setContador] = useState(0);
   const [save, setSave] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,6 @@ function Escaloes() {
   };
 
   const onSubmit = (data) => {
-    
     actions.updateAction(data);
     setSave(true);
   };
@@ -78,10 +78,11 @@ function Escaloes() {
           {isOpen === true ? (
             <InputGroup>
               <InputLabel>Descrição</InputLabel>
-              <TextArea  ref={register} name="descricaocategoria" placeholder="Inserir uma Descrição"/>
+              <TextArea ref={register} name="descricaocategoria" placeholder="Inserir uma Descrição" />
             </InputGroup>
           ) : null}
         </div>
+        
         {indexes.map((index) => {
           return (
             <div key={index} className="row">
@@ -96,6 +97,7 @@ function Escaloes() {
                     name={`categorias[${index}].nomeCategoria`}
                     id="nomeCategoria"
                     placeholder="Ex: Maratona"
+                    defaultValue={state.Evento.categorias.nomeCategoria}
                   />
                 </InputGroup>
               </div>
